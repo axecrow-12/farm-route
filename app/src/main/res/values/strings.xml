@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FarmRoute</string>
+    <string name="diagnose">Diagnose a crop</string>
+    <string name="register_field">Register a field</string>
+    <string name="view_history">View history</string>
+    <string name="capture">Capture</string>
+    <string name="save_field">Save field</string>
+    <string name="field_name">Field name</string>
+    <string name="radius_hint">Radius in metres (e.g. 100)</string>
+    <string name="no_records">No diagnoses yet. Tap Diagnose a crop to begin.</string>
+</resources>

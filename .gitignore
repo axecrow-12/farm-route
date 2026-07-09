@@ -1,0 +1,14 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Keep the model out of git if it is large; use Git LFS or releases instead.
+# Comment the next two lines out if you want to commit the model directly.
+app/src/main/assets/farmroute_disease_model.tflite
