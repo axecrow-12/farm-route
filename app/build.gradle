@@ -27,7 +27,7 @@ android {
     }
 
     // Keep the tflite model uncompressed so it can be memory mapped.
-    aaptOptions {
+    androidResources {
         noCompress "tflite"
     }
 }
@@ -54,6 +54,9 @@ dependencies {
 
     // Location
     implementation 'com.google.android.gms:play-services-location:21.1.0'
+
+    // EXIF orientation of captured photos
+    implementation 'androidx.exifinterface:exifinterface:1.3.7'
 
     // WorkManager
     implementation 'androidx.work:work-runtime:2.9.0'

@@ -43,7 +43,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
         holder.label.setText(d.predictedLabel.replace("___", ", ").replace("_", " "));
         holder.meta.setText(String.format(Locale.US, "%.0f%%  |  %s",
                 d.confidence * 100, dateFormat.format(new Date(d.timestamp))));
-        holder.sync.setText(d.syncedToServer ? "Synced" : "Pending sync");
+        holder.sync.setText(d.syncedToServer ? R.string.synced : R.string.pending_sync);
     }
 
     @Override
