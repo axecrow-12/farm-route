@@ -45,12 +45,13 @@ app/src/main/java/com/farmroute/app/
   ui/fields/         FieldRegistrationActivity
   ui/history/        HistoryActivity, HistoryAdapter
 app/src/main/assets/  model + labels go here
+training/             FarmRoute_Lite_Training.ipynb (produces the model)
 ```
 
 ## Getting started
 
 1. Clone the repo and open it in Android Studio.
-2. Train the model using the FarmRoute Lite Training notebook (see the ML section below), or use your own.
+2. Train the model with [`training/FarmRoute_Lite_Training.ipynb`](training/FarmRoute_Lite_Training.ipynb) in Google Colab (see the ML section below), or use your own.
 3. Drop `farmroute_disease_model.tflite` and `labels.txt` into `app/src/main/assets/`.
 4. Build and run on a device with a camera (an emulator will not have a real camera or GPS).
 
@@ -59,6 +60,8 @@ The project ships with a placeholder `labels.txt` so it compiles before you add 
 ## The machine learning model
 
 The classifier is a MobileNetV2 with the narrowest width multiplier (alpha 0.35), trained with transfer learning on the PlantVillage dataset, filtered to the crops most relevant to Zimbabwean smallholders: maize, tomato, potato, and pepper. Training streams images from disk and exports a quantised TFLite model so it runs on entry level phones and trains within free tier cloud limits.
+
+To train it, open `training/FarmRoute_Lite_Training.ipynb` in Google Colab, choose a T4 GPU runtime, and run all cells (roughly 30 to 45 minutes on the free tier). The notebook downloads only the 19 needed PlantVillage classes, trains in two stages (new head, then fine tuning the top of the backbone), reports per class accuracy on a held out test set, and exports an int8 quantised model with float input and output. Before downloading, it checks the exported model against the app's expectations: input shape, output size, data types, and accuracy after quantisation.
 
 Important: the training input size (160 x 160) must match `INPUT_SIZE` in `TFLiteClassifier.java`. If you change one, change the other.
 
