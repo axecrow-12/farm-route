@@ -12,7 +12,7 @@
         android:layout_height="240dp"
         android:scaleType="centerCrop"
         android:layout_marginBottom="24dp"
-        android:contentDescription="Captured leaf" />
+        android:contentDescription="@string/captured_leaf" />
 
     <TextView
         android:id="@+id/text_label"
