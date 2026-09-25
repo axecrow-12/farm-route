@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="earth">#8D6E63</color>
+    <color name="green_dark">#003300</color>
+    <color name="green_light">#E8F0E4</color>
+    <color name="green_primary">#1B5E20</color>
+    <color name="grey">#666666</color>
+    <color name="text_dark">#222222</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">FarmRoute</string>
+    <string name="capture">Capture</string>
+    <string name="diagnose">Diagnose a crop</string>
+    <string name="field_name">Field name</string>
+    <string name="no_records">No diagnoses yet. Tap Diagnose a crop to begin.</string>
+    <string name="radius_hint">Radius in metres (e.g. 100)</string>
+    <string name="register_field">Register a field</string>
+    <string name="save_field">Save field</string>
+    <string name="view_history">View history</string>
+    <style name="Theme.FarmRoute" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryVariant">@color/green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/earth</item>
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/green_dark</item>
+    </style>
+</resources>

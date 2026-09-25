@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_field"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/green_primary"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/field_name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/input_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/radius_hint"
+        android:inputType="number"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btn_save_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_field"
+        android:backgroundTint="@color/green_primary" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The field is saved at your current location."
+        android:textSize="12sp"
+        android:textColor="@color/grey"
+        android:layout_marginTop="12dp" />
+</LinearLayout>

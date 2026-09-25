@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@color/green_light">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/green_primary"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offline crop disease monitoring"
+        android:textSize="14sp"
+        android:textColor="@color/grey"
+        android:layout_marginBottom="48dp" />
+
+    <Button
+        android:id="@+id/btn_diagnose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/diagnose"
+        android:backgroundTint="@color/green_primary"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_field"
+        android:backgroundTint="@color/earth"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_history"
+        android:backgroundTint="@color/green_dark" />
+</LinearLayout>

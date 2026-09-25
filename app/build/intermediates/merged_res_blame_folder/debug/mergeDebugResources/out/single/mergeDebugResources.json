@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_activity_field_registration.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/activity_field_registration.xml"
+    },
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_item_diagnosis.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/item_diagnosis.xml"
+    },
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_activity_history.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_activity_main.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_activity_camera.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/activity_camera.xml"
+    },
+    {
+        "merged": "com.farmroute.app-debug-46:/layout_activity_results.xml.flat",
+        "source": "com.farmroute.app-main-48:/layout/activity_results.xml"
+    }
+]
