@@ -8,4 +8,9 @@
     <string name="field_name">Field name</string>
     <string name="radius_hint">Radius in metres (e.g. 100)</string>
     <string name="no_records">No diagnoses yet. Tap Diagnose a crop to begin.</string>
+    <string name="tagline">Offline crop disease monitoring</string>
+    <string name="field_saved_note">The field is saved at your current location.</string>
+    <string name="captured_leaf">Captured leaf</string>
+    <string name="synced">Synced</string>
+    <string name="pending_sync">Pending sync</string>
 </resources>

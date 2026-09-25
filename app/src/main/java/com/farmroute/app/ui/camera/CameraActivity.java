@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -19,6 +19,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.exifinterface.media.ExifInterface;
 
 import com.farmroute.app.R;
 import com.farmroute.app.data.local.Diagnosis;
@@ -32,6 +33,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -118,6 +120,12 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onImageSaved(@NonNull ImageCapture.OutputFileResults results) {
                 Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                if (bitmap == null) {
+                    runOnUiThread(() -> Toast.makeText(CameraActivity.this,
+                            "Could not read photo, try again", Toast.LENGTH_SHORT).show());
+                    return;
+                }
+                bitmap = rotateToUpright(bitmap, photoFile.getAbsolutePath());
                 TFLiteClassifier.Result result = classifier.classify(bitmap);
                 resolveLocationAndSave(photoFile.getAbsolutePath(), result);
             }
@@ -128,6 +136,32 @@ public class CameraActivity extends AppCompatActivity {
                         Toast.makeText(CameraActivity.this, "Capture failed", Toast.LENGTH_SHORT).show());
             }
         });
+    }
+
+    /**
+     * The classifier expects an upright image, but the sensor writes the JPEG
+     * in its native orientation and records the difference in EXIF. Apply it
+     * before inference or portrait captures reach the model sideways.
+     */
+    private Bitmap rotateToUpright(Bitmap bitmap, String path) {
+        try {
+            ExifInterface exif = new ExifInterface(path);
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            int degrees;
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90: degrees = 90; break;
+                case ExifInterface.ORIENTATION_ROTATE_180: degrees = 180; break;
+                case ExifInterface.ORIENTATION_ROTATE_270: degrees = 270; break;
+                default: return bitmap;
+            }
+            Matrix matrix = new Matrix();
+            matrix.postRotate(degrees);
+            return Bitmap.createBitmap(bitmap, 0, 0,
+                    bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        } catch (IOException e) {
+            return bitmap;
+        }
     }
 
     private void resolveLocationAndSave(String imagePath, TFLiteClassifier.Result result) {
